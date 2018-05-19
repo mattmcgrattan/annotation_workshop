@@ -1,0 +1,17 @@
+version: '2'
+services:
+  annotation-server:
+    # build: ../elucidate-server
+    image: "garyttierneydi/elucidate-server:latest"
+    links:
+      - annotation-database:database
+    environment:
+      - DATABASE_USER=postgres
+      - CATALINA_OPTS=-Ddb.url=jdbc:postgresql://database:5432/annotations -Ddb.user="postgres" -Ddb.password=$DATABASE_PASSWORD
+    ports:
+      - 8080:8080
+  annotation-database:
+    # build: ../elucidate-db-scripts
+    image: "garyttierneydi/elucidate-database:latest"
+    environment:
+      - POSTGRES_DB=annotations
