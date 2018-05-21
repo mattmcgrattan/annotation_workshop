@@ -1,0 +1,59 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://media.nga.gov/public/manifests/nga_highlights.json",
+  "@type": "sc:Manifest",
+  "logo": "https://www.nga.gov/content/dam/ngaweb/imgs/NGAEB.jpg",
+  "label": "National Gallery of Art Collection Highlights",
+  "metadata": [
+    {
+      "label": "Description",
+      "value": "Highlights from the collection of the National Gallery of Art"
+    }
+  ],
+  "description": "A selection of highlights from the National Gallery of Art",
+  "guid": "e61700b6-7cb9-4c14-92ab-4246a345ec71",
+  "viewingDirection": "left-to-right",
+  "viewingHint": "individuals",
+  "sequences": [
+    {
+      "@id": "https://media.nga.gov/public/manifests/sequence/normal.json",
+      "@type": "sc:Sequence",
+      "label": "Normal Order",
+      "canvases": [
+        {
+          "@id": "https://media.nga.gov/public/manifests/canvas/106382.json",
+          "@type": "sc:Canvas",
+          "label": "Self-Portrait",
+          "height": 402,
+          "width": 307,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://media.nga.gov/iiif/public/objects/1/0/6/3/8/2/106382-primary-0-nativeres.ptif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 402,
+                "width": 307,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://media.nga.gov/iiif/public/objects/1/0/6/3/8/2/106382-primary-0-nativeres.ptif",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              },
+              "on": "https://media.nga.gov/public/manifests/canvas/106382.json"
+            }
+          ],
+          "otherContent": [
+            {
+              "@id": "http://localhost:8000/foo.json",
+              "@type": "sc:AnnotationList",
+              "label": "Foo"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
