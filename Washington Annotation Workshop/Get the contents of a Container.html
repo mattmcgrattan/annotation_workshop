@@ -32,7 +32,7 @@
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>Accept: application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"
 </div></div></div></pre>
 <h2>Example</h2>
-<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>GET /annotations/w3c/my-container/ HTTP/1.1
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>GET /annotation/w3c/my-container/ HTTP/1.1
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>Accept: application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>Content-Type: application/ld+json;
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>Host: localhost:8080
@@ -54,13 +54,13 @@
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context" : "http://www.w3.org/ns/anno.jsonld",
-</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id" : "http://localhost:8080/annotations//w3c/my-container/",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id" : "http://localhost:8080/annotation/w3c/my-container/",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type" : "AnnotationCollection",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "label" : "A Container for Web Annotations",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "first" : {
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "type" : "AnnotationPage",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "items" : [ {
-</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "id" : "http://localhost:8080/annotations//w3c/my-container/e849d4a3-b769-4925-8f08-9214804f0e92",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "id" : "http://localhost:8080/annotation/w3c/my-container/e849d4a3-b769-4925-8f08-9214804f0e92",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "type" : "Annotation",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "body" : {
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    "type" : "TextualBody",
@@ -68,7 +68,7 @@
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  },
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "target" : "http://www.example.com/index.html"
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    }, {
-</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "id" : "http://localhost:8080/annotations//w3c/my-container/foo-bar",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "id" : "http://localhost:8080/annotation/w3c/my-container/foo-bar",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "type" : "Annotation",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "body" : {
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    "type" : "TextualBody",
@@ -76,10 +76,10 @@
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  },
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "target" : "http://www.example.com/index.html"
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    } ],
-</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "partOf" : "http://localhost:8080/annotations//w3c/my-container/",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "partOf" : "http://localhost:8080/annotation/w3c/my-container/",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "startIndex" : 0
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  },
-</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "last" : "http://localhost:8080/annotations//w3c/my-container/?page=0&amp;desc=1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "last" : "http://localhost:8080/annotation/w3c/my-container/?page=0&amp;desc=1",
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "total" : 2
 </div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
 </div></div></div></pre>
@@ -87,9 +87,9 @@
 <p>The annotation server returns:</p>
 <p><code>"total" : 2</code></p>
 <p>And a <code>partOf</code> link to the Container <code>id</code>:</p>
-<p><code>"partOf" : "http://localhost:8080/annotations//w3c/my-container/"</code></p>
+<p><code>"partOf" : "http://localhost:8080/annotation/w3c/my-container/"</code></p>
 <p>And a <code>last</code> link to the last page in the paged sequence of Annotation Pages.</p>
-<p><code>"last" : "http://localhost:8080/annotations//w3c/my-container/?page=0&amp;desc=1"</code></p>
+<p><code>"last" : "http://localhost:8080/annotation/w3c/my-container/?page=0&amp;desc=1"</code></p>
 </div></div>
       <script>document.body.onkeyup = function(e) {
 if (e.keyCode === 39) window.location.href = 'Get a Specific Annotation.html';
