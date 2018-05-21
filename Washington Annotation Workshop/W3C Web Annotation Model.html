@@ -1,0 +1,325 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- common.css -->
+      <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: -apple-system, Helvetica, Arial, sans-serif;margin: 0;padding: 20px;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;height: auto;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 90%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+      <!-- ace-static.css -->
+      <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter > .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+      <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+      <!-- export.css -->
+      <style>
+        body{margin:0 auto;max-width:800px;line-height:1.4}
+        #nav{margin:5px 0 10px;font-size:15px}
+        #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+        #contentarea{font-size:15px;margin:16px 0}
+        .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+        .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+        .latex-cell{white-space:pre-wrap;}
+      </style>
+      <!-- User CSS -->
+      <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+    </head>
+    <body>
+      <div id="nav"><div>Next: <a href='W3C Web Annotation Protocol.html'>W3C Web Annotation Protocol</a>, Previous: <a href='Sample Presentation API 3.0 Manifest.html'>Sample Presentation API 3.0 Manifest</a>, Up: <a href='index.html'>Index</a></div></div>
+      <div id="titlearea">
+        <h2>W3C Web Annotation Model</h2>
+      </div>
+      <div id="contentarea"><div class="cell markdown-cell"><h1>Model / Vocabulary</h1>
+<p>Model: <a href="https://www.w3.org/TR/annotation-model/">https://www.w3.org/TR/annotation-model/</a></p>
+<p>Vocabulary: <a href="http://www.w3.org/TR/annotation-vocab/">http://www.w3.org/TR/annotation-vocab/</a></p>
+<h1>Basics</h1>
+<p>The core model is simple.</p>
+<ul>
+<li>@context</li>
+<li>id</li>
+<li>type</li>
+<li>body</li>
+<li>target</li>
+</ul>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": "http://example.org/post1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": "http://example.com/page1"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<p><em>N.B. there can be more than one body, and more than one target. Both body and target can be a list/array.</em></p>
+<p>However, the W3C Model assumes for an annotation that all bodies and targets apply equally to each other. So, if there are multiple bodies, it's assumed that all bodies apply to the target. If there are multiple targets, it's assumed that all of the bodies are being annotated on all of the targets.</p>
+<h1>Types of Body</h1>
+<h3>External Web Resource</h3>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno2",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "id": "http://example.org/analysis1.mp3",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "format": "audio/mpeg",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "language": "fr"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  ...
+</div></div></div></pre>
+<p><code>format</code>: the <code>rfc6838</code> media-type of the resource<br>
+<code>language</code>: the language of the resource<br>
+<code>id</code>: the URI for the resource</p>
+<p>It can also be useful to give:</p>
+<p><code>type</code> for the resource.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset</td>
+<td>Resource which encodes data in a defined structure.</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>Image resources, primarily intended to be seen.</td>
+</tr>
+<tr>
+<td>Video</td>
+<td>Video resources, with or without audio.</td>
+</tr>
+<tr>
+<td>Sound</td>
+<td>Resource primarily intended to be heard.</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>Resource primarily intended to be read.</td>
+</tr>
+</tbody>
+</table>
+<h2>Embedded TextualBody</h2>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno5",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "type" : "TextualBody",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "value" : "&lt;p&gt;j'adore !&lt;/p&gt;",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "format" : "text/html",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "language" : "fr"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  },
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": "http://example.org/photo1"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<h2>String Body</h2>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno6",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "bodyValue": "Comment text",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": "http://example.org/target1"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<h1>Targets</h1>
+<p>Targets are often External Web Resources, too. Carrying the same properties as above.</p>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno3",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "id": "http://example.org/video1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "type": "Video"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  },
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "id": "http://example.org/website1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "type": "Text"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<h1>Fragments of resources</h1>
+<p>N.B. fragments can be used with both Bodies and Targets. For example, to tag a fragment of an image, with a fragment of some text. Or to tag a document with a temporal fragment of a video commentary, etc.</p>
+<h2>Media Fragments</h2>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno4",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": "http://example.org/description1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "id": "http://example.com/image1#xywh=100,100,300,300",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "type": "Image",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "format": "image/jpeg"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<p>Or in a more expanded form, using <code>SpecificResource</code>:</p>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>// PUT EXAMPLE HERE WITH IMAGE SELECTOR
+</div></div></div></pre>
+<p>Or a section of time:</p>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno20",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "source": "http://example.org/video1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "purpose": "describing",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "selector": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "type": "FragmentSelector",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "conformsTo": "http://www.w3.org/TR/media-frags/",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "value": "t=30,60"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  },
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": "http://example.org/image1"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<h2>Text Position Selector</h2>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno24",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": "http://example.org/review1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "source": "http://example.org/ebook1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "selector": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "type": "TextPositionSelector",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "start": 412,
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "end": 795
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<h1>Motivation and Purpose</h1>
+<p>As with the <em>Open Annotation</em> model, the <em>W3C Model</em> provides a way of indicating the motivation for an annotation.</p>
+<p>However, in addition to <code>motivation</code> the <em>W3C Model</em> introduces the notion of <code>purpose</code>.</p>
+<h2>Purpose</h2>
+<p>Purpose uses the same vocabulary as <code>motivation</code> but applies to an individual annotation body, rather than the entire annotation.</p>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno15",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "motivation": "bookmarking",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": [
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "type": "TextualBody",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "value": "readme",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "purpose": "tagging"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    },
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "type": "TextualBody",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "value": "A good description of the topic that bears further investigation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>  "purpose": "describing"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  ],
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": "http://example.com/page1"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<h1>Lifecyle Information</h1>
+<p>It is also possible to add information about the creator, lifecyle, etc. of an annotation.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>creator</td>
+<td>The agent responsible for creating the resource. This may be either a human, an organization or a software agent.</td>
+</tr>
+<tr>
+<td>created</td>
+<td>The time at which the resource was created.</td>
+</tr>
+<tr>
+<td>generator</td>
+<td>The agent responsible for serializing the resource.</td>
+</tr>
+<tr>
+<td>generated</td>
+<td>The time at which the Annotation serialization was generated.</td>
+</tr>
+<tr>
+<td>modified</td>
+<td>The time at which the resource was modified, after creation.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>{
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "@context": "http://www.w3.org/ns/anno.jsonld",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "id": "http://example.org/anno11",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "type": "Annotation",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "creator": "http://example.org/user1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "created": "2015-01-28T12:00:00Z",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "modified": "2015-01-29T09:00:00Z",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "generator": "http://example.org/client1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "generated": "2015-02-04T12:00:00Z",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "body": {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "id": "http://example.net/review1",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "creator": "http://example.net/user2",
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    "created": "2014-06-02T17:00:00Z"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  },
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>  "target": "http://example.com/restaurant1"
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></pre>
+<p>Further detailed information can be provided about:</p>
+<h2>Agents</h2>
+<p>Human or software agents responsible for the creation or generation of an annotation resource.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>The IRI that identifies the agent.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type of Agent.</td>
+</tr>
+<tr>
+<td>Person</td>
+<td>Class for a Human Agent.</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td>Class for an Organization.</td>
+</tr>
+<tr>
+<td>Software</td>
+<td>Class for Software</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of agent.</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>Nickname of agent.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email of agent.</td>
+</tr>
+<tr>
+<td>email_sha1</td>
+<td>Hash of email of agent.</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td>Homepage of agent.</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+      <script>document.body.onkeyup = function(e) {
+if (e.keyCode === 39) window.location.href = 'W3C Web Annotation Protocol.html';
+if (e.keyCode === 37) window.location.href = 'Sample Presentation API 3.0 Manifest.html';
+}</script>
+    </body>
+    </html>
+  
